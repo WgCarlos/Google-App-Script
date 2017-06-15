@@ -1,0 +1,9 @@
+function createAndSendDocument(){
+  var doc = DocumentApp.create('Ola,Mundo');
+  doc.getBody().appendParagraph('Esse paragrafo foi criado pelo google app script');
+  var url = doc.getUrl();
+  var email = Session.getActiveUser().getEmail();
+  var subject = doc.getName();
+  var body = 'Link do seu documento: ' + url;
+  GmailApp.sendEmail(email, subject, body);
+}
